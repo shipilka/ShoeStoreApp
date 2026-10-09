@@ -5,8 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroupProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Каталог обуви"
+        Height="500"
+        Width="850"
+        WindowStartupLocation="CenterScreen">
 
-    </Grid>
+    <DockPanel Margin="12">
+        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,10">
+            <TextBlock Text="Каталог обуви"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Margin="0,0,0,10"/>
+
+            <WrapPanel>
+                <Button Content="Добавить"
+                        Click="AddButton_Click"
+                        Padding="12,6"
+                        Margin="0,0,8,8"/>
+
+                <Button Content="Изменить"
+                        Click="EditButton_Click"
+                        Padding="12,6"
+                        Margin="0,0,8,8"/>
+
+                <Button Content="Удалить"
+                        Click="DeleteButton_Click"
+                        Padding="12,6"
+                        Margin="0,0,16,8"/>
+
+                <TextBox x:Name="SearchBox"
+                         Width="220"
+                         Height="30"
+                         VerticalContentAlignment="Center"
+                         ToolTip="Поиск по названию"
+                         TextChanged="SearchBox_TextChanged"/>
+            </WrapPanel>
+        </StackPanel>
+
+        <DataGrid x:Name="ProductsGrid"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код"
+                                    Binding="{Binding Id}"
+                                    Width="60"/>
+                <DataGridTextColumn Header="Название"
+                                    Binding="{Binding Name}"
+                                    Width="*"/>
+                <DataGridTextColumn Header="Категория"
+                                    Binding="{Binding Category}"
+                                    Width="180"/>
+                <DataGridTextColumn Header="Цена"
+                                    Binding="{Binding Price}"
+                                    Width="100"/>
+                <DataGridTextColumn Header="На складе"
+                                    Binding="{Binding Stock}"
+                                    Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
 </Window>

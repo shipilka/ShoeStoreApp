@@ -1,25 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Globalization;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using GroupProject.Models;
 
-namespace GroupProject
+namespace GroupProject;
+
+public partial class ProductDialog : Window
 {
-    /// <summary>
-    /// Логика взаимодействия для ProductDialog.xaml
-    /// </summary>
-    public partial class ProductDialog : Window
+    public Product? ResultProduct { get; private set; }
+
+    public ProductDialog()
     {
-        public ProductDialog()
+        InitializeComponent();
+    }
+
+    public void LoadProduct(Product product)
+    {
+        NameBox.Text = product.Name;
+        CategoryBox.Text = product.Category;
+        PriceBox.Text = product.Price.ToString(CultureInfo.CurrentCulture);
+        StockBox.Text = product.Stock.ToString();
+    }
+
+    private void SaveButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(NameBox.Text) ||
+            string.IsNullOrWhiteSpace(CategoryBox.Text))
         {
-            InitializeComponent();
+            MessageBox.Show("Введите название и категорию.");
+            return;
         }
+
+        if (!decimal.TryParse(
+                PriceBox.Text,
+                NumberStyles.Number,
+                CultureInfo.CurrentCulture,
+                out decimal price) || price < 0)
+        {
+            MessageBox.Show("Введите корректную цену.");
+            return;
+        }
+
+        if (!int.TryParse(StockBox.Text, out int stock) || stock < 0)
+        {
+            MessageBox.Show("Введите целое количество не меньше нуля.");
+            return;
+        }
+
+        ResultProduct = new Product
+        {
+            Name = NameBox.Text.Trim(),
+            Category = CategoryBox.Text.Trim(),
+            Price = price,
+            Stock = stock
+        };
+
+        DialogResult = true;
     }
 }
