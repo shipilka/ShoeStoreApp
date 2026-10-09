@@ -5,8 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroupProject"
         mc:Ignorable="d"
-        Title="ProductDialog" Height="450" Width="800">
-    <Grid>
-        
+        Title="Товар"
+        Height="340"
+        Width="400"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner">
+
+    <Grid Margin="16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Название:"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   Margin="0,6"/>
+        <TextBox x:Name="NameBox"
+                 Grid.Row="0"
+                 Grid.Column="1"
+                 Margin="0,6"/>
+
+        <TextBlock Text="Категория:"
+                   Grid.Row="1"
+                   VerticalAlignment="Center"
+                   Margin="0,6"/>
+        <TextBox x:Name="CategoryBox"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 Margin="0,6"/>
+
+        <TextBlock Text="Цена:"
+                   Grid.Row="2"
+                   VerticalAlignment="Center"
+                   Margin="0,6"/>
+        <TextBox x:Name="PriceBox"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Margin="0,6"/>
+
+        <TextBlock Text="Количество:"
+                   Grid.Row="3"
+                   VerticalAlignment="Center"
+                   Margin="0,6"/>
+        <TextBox x:Name="StockBox"
+                 Grid.Row="3"
+                 Grid.Column="1"
+                 Margin="0,6"/>
+
+        <StackPanel Grid.Row="4"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom">
+            <Button Content="Сохранить"
+                    Click="SaveButton_Click"
+                    Padding="12,6"
+                    Margin="0,0,8,0"/>
+            <Button Content="Отмена"
+                    IsCancel="True"
+                    Padding="12,6"/>
+        </StackPanel>
     </Grid>
 </Window>
