@@ -6,7 +6,24 @@
         xmlns:local="clr-namespace:GroupProject"
         mc:Ignorable="d"
         Title="Authorization" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <StackPanel Margin="24">
+            <TextBlock Text="Вход"
+                   FontSize="24" FontWeight="Bold"
+                   Margin="0,0,0,16"/>
+
+            <TextBlock Text="Логин"/>
+            <TextBox x:Name="LoginTextBox" Margin="0,4,0,10"/>
+
+            <TextBlock Text="Пароль"/>
+            <PasswordBox x:Name="PasswordBox" Margin="0,4,0,16"/>
+
+            <Button x:Name="AuthorizationButton" Content="Войти" Height="34"
+                Click="AuthorizationButton_Click"/>
+
+            <Button x:Name="OpenRegistrationButton" Content="Зарегистрироваться" Height="34"
+                Margin="0,8,0,0"
+                Click="OpenRegistrationButton_Click"/>
+        </StackPanel>
+    </DockPanel>
 </Window>
