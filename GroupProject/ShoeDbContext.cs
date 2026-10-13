@@ -126,4 +126,6 @@ namespace GroupProject
         public int OrderStatusId { get; set; }
         public string OrderStatusName { get; set; } = null!;
     }
+
+    public struct Db { }
 }
